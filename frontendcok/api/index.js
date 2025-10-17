@@ -1,7 +1,7 @@
 import axios from 'axios'
 // ini kapan jadi .ts?
 const api = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: 'http://localhost:3333',
   withCredentials: true, 
   xsrfCookieName: 'XSRF-TOKEN', 
   xsrfHeaderName: 'X-XSRF-TOKEN', 
