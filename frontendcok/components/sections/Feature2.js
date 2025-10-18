@@ -1,7 +1,26 @@
 
 'use client'
+import { useState, useLayoutEffect } from 'react'
 
 export default function Feature2() {
+    const [screenSize, setScreenSize] = useState('desktop')
+
+    useLayoutEffect(() => {
+        const checkScreenSize = () => {
+            const width = window.innerWidth
+            if (width <= 767) {
+                setScreenSize('mobile')
+            } else if (width >= 768 && width <= 991) {
+                setScreenSize('tablet')
+            } else {
+                setScreenSize('desktop')
+            }
+        }
+
+        checkScreenSize()
+        window.addEventListener('resize', checkScreenSize)
+        return () => window.removeEventListener('resize', checkScreenSize)
+    }, [])
     return (
         <>
             <style jsx global>{`
@@ -63,7 +82,7 @@ export default function Feature2() {
 
             <section id="feature" className="tf-section features" style={{
                 background: 'linear-gradient(135deg, rgba(10,15,28,0.8) 0%, rgba(26,35,50,0.6) 50%, rgba(10,15,28,0.8) 100%)',
-                padding: '80px 0',
+                padding: screenSize === 'mobile' ? '60px 0' : '80px 0',
                 marginBottom: '60px'
             }}>
                 <div className="container">
@@ -75,7 +94,10 @@ export default function Feature2() {
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                     backgroundClip: 'text',
-                                    textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                                    textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                                    fontSize: screenSize === 'mobile' ? '1.8rem' : '2.2rem',
+                                    textAlign: 'center',
+                                    marginBottom: screenSize === 'mobile' ? '40px' : '0'
                                 }}>
                                     We have outstanding technology <br className="show-destop" /> and features
                                 </h2>
@@ -85,23 +107,26 @@ export default function Feature2() {
                             <div style={{
                                 display: 'flex',
                                 flexDirection: 'column',
-                                gap: '50px',
+                                gap: screenSize === 'mobile' ? '30px' : '50px',
                                 maxWidth: '1200px',
                                 margin: '0 auto',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                padding: screenSize === 'mobile' ? '0 20px' : '0'
                             }}>
                                 {/* Baris pertama - 2 kolom */}
                                 <div style={{
                                     display: 'flex',
+                                    flexDirection: screenSize === 'mobile' ? 'column' : 'row',
                                     justifyContent: 'center',
                                     alignItems: 'stretch',
-                                    gap: '50px',
+                                    gap: screenSize === 'mobile' ? '20px' : '50px',
                                     width: '100%'
                                 }}>
                                     <div style={{
                                         flex: '1',
-                                        maxWidth: '480px',
-                                        minWidth: '300px',
+                                        maxWidth: screenSize === 'mobile' ? '100%' : '480px',
+                                        minWidth: screenSize === 'mobile' ? 'auto' : '300px',
+                                        width: screenSize === 'mobile' ? '100%' : 'auto',
                                         marginBottom: '0'
                                     }}>
                                         <div className="icon-box-style2 elegant-hover" style={{
@@ -110,28 +135,38 @@ export default function Feature2() {
                                             WebkitBackdropFilter: 'blur(10px)',
                                             border: '1px solid rgba(255,255,255,0.1)',
                                             borderRadius: '16px',
-                                            padding: '30px',
+                                            padding: screenSize === 'mobile' ? '25px' : '30px',
                                             transition: 'all 0.3s ease',
                                             cursor: 'default'
                                         }}
 >
                                             <div className="icon" style={{
                                                 marginBottom: '20px',
-                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))'
+                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                width: '100%'
                                             }}>
-                                                <img src="/assets/images/common/icon_4.png" alt="" />
+                                                <img src="/assets/images/common/icon_4.png" alt="" style={{
+                                                    width: screenSize === 'mobile' ? '40px' : '50px',
+                                                    height: screenSize === 'mobile' ? '40px' : '50px'
+                                                }} />
                                             </div>
+                                            <h5 className="title" style={{
+                                                color: '#E2E8F0',
+                                                marginBottom: '15px',
+                                                fontSize: screenSize === 'mobile' ? '18px' : '20px',
+                                                fontWeight: '600',
+                                                textAlign: 'center'
+                                            }}>1,000,000,000 Tokens</h5>
                                             <div className="content">
-                                                <h5 className="title" style={{
-                                                    color: '#E2E8F0',
-                                                    marginBottom: '12px',
-                                                    fontSize: '20px',
-                                                    fontWeight: '600'
-                                                }}>1,000,000,000 Tokens</h5>
                                                 <p style={{
                                                     color: '#9CA3AF',
                                                     lineHeight: '1.6',
-                                                    margin: 0
+                                                    margin: 0,
+                                                    fontSize: screenSize === 'mobile' ? '14px' : '16px',
+                                                    textAlign: 'justify'
                                                 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nunc non
                                                     ligula suscipit tincidunt at sit amet nunc.</p>
                                             </div>
@@ -139,8 +174,9 @@ export default function Feature2() {
                                     </div>
                                     <div style={{
                                         flex: '1',
-                                        maxWidth: '480px',
-                                        minWidth: '300px',
+                                        maxWidth: screenSize === 'mobile' ? '100%' : '480px',
+                                        minWidth: screenSize === 'mobile' ? 'auto' : '300px',
+                                        width: screenSize === 'mobile' ? '100%' : 'auto',
                                         marginBottom: '0'
                                     }}>
                                         <div className="icon-box-style2 elegant-hover" style={{
@@ -149,28 +185,38 @@ export default function Feature2() {
                                             WebkitBackdropFilter: 'blur(10px)',
                                             border: '1px solid rgba(255,255,255,0.1)',
                                             borderRadius: '16px',
-                                            padding: '30px',
+                                            padding: screenSize === 'mobile' ? '25px' : '30px',
                                             transition: 'all 0.3s ease',
                                             cursor: 'default'
                                         }}
 >
                                             <div className="icon" style={{
                                                 marginBottom: '20px',
-                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))'
+                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                width: '100%'
                                             }}>
-                                                <img src="/assets/images/common/icon_5.png" alt="" />
+                                                <img src="/assets/images/common/icon_5.png" alt="" style={{
+                                                    width: screenSize === 'mobile' ? '40px' : '50px',
+                                                    height: screenSize === 'mobile' ? '40px' : '50px'
+                                                }} />
                                             </div>
+                                            <h5 className="title" style={{
+                                                color: '#E2E8F0',
+                                                marginBottom: '15px',
+                                                fontSize: screenSize === 'mobile' ? '18px' : '20px',
+                                                fontWeight: '600',
+                                                textAlign: 'center'
+                                            }}>Fully Decentralized</h5>
                                             <div className="content">
-                                                <h5 className="title" style={{
-                                                    color: '#E2E8F0',
-                                                    marginBottom: '12px',
-                                                    fontSize: '20px',
-                                                    fontWeight: '600'
-                                                }}>Fully Decentralized</h5>
                                                 <p style={{
                                                     color: '#9CA3AF',
                                                     lineHeight: '1.6',
-                                                    margin: 0
+                                                    margin: 0,
+                                                    fontSize: screenSize === 'mobile' ? '14px' : '16px',
+                                                    textAlign: 'justify'
                                                 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nunc non
                                                     ligula suscipit tincidunt at sit amet nunc.</p>
                                             </div>
@@ -180,15 +226,17 @@ export default function Feature2() {
                                 {/* Baris kedua - 2 kolom */}
                                 <div style={{
                                     display: 'flex',
+                                    flexDirection: screenSize === 'mobile' ? 'column' : 'row',
                                     justifyContent: 'center',
                                     alignItems: 'stretch',
-                                    gap: '50px',
+                                    gap: screenSize === 'mobile' ? '20px' : '50px',
                                     width: '100%'
                                 }}>
                                     <div style={{
                                         flex: '1',
-                                        maxWidth: '480px',
-                                        minWidth: '300px',
+                                        maxWidth: screenSize === 'mobile' ? '100%' : '480px',
+                                        minWidth: screenSize === 'mobile' ? 'auto' : '300px',
+                                        width: screenSize === 'mobile' ? '100%' : 'auto',
                                         marginBottom: '0'
                                     }}>
                                         <div className="icon-box-style2 elegant-hover" style={{
@@ -197,28 +245,38 @@ export default function Feature2() {
                                             WebkitBackdropFilter: 'blur(10px)',
                                             border: '1px solid rgba(255,255,255,0.1)',
                                             borderRadius: '16px',
-                                            padding: '30px',
+                                            padding: screenSize === 'mobile' ? '25px' : '30px',
                                             transition: 'all 0.3s ease',
                                             cursor: 'default'
                                         }}
 >
                                             <div className="icon" style={{
                                                 marginBottom: '20px',
-                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))'
+                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                width: '100%'
                                             }}>
-                                                <img src="/assets/images/common/icon_6.png" alt="" />
+                                                <img src="/assets/images/common/icon_6.png" alt="" style={{
+                                                    width: screenSize === 'mobile' ? '40px' : '50px',
+                                                    height: screenSize === 'mobile' ? '40px' : '50px'
+                                                }} />
                                             </div>
+                                            <h5 className="title" style={{
+                                                color: '#E2E8F0',
+                                                marginBottom: '15px',
+                                                fontSize: screenSize === 'mobile' ? '18px' : '20px',
+                                                fontWeight: '600',
+                                                textAlign: 'center'
+                                            }}>Locked and Trusted</h5>
                                             <div className="content">
-                                                <h5 className="title" style={{
-                                                    color: '#E2E8F0',
-                                                    marginBottom: '12px',
-                                                    fontSize: '20px',
-                                                    fontWeight: '600'
-                                                }}>Locked and Trusted</h5>
                                                 <p style={{
                                                     color: '#9CA3AF',
                                                     lineHeight: '1.6',
-                                                    margin: 0
+                                                    margin: 0,
+                                                    fontSize: screenSize === 'mobile' ? '14px' : '16px',
+                                                    textAlign: 'justify'
                                                 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nunc non
                                                     ligula suscipit tincidunt at sit amet nunc.</p>
                                             </div>
@@ -226,8 +284,9 @@ export default function Feature2() {
                                     </div>
                                     <div style={{
                                         flex: '1',
-                                        maxWidth: '480px',
-                                        minWidth: '300px',
+                                        maxWidth: screenSize === 'mobile' ? '100%' : '480px',
+                                        minWidth: screenSize === 'mobile' ? 'auto' : '300px',
+                                        width: screenSize === 'mobile' ? '100%' : 'auto',
                                         marginBottom: '0'
                                     }}>
                                         <div className="icon-box-style2 elegant-hover" style={{
@@ -236,28 +295,38 @@ export default function Feature2() {
                                             WebkitBackdropFilter: 'blur(10px)',
                                             border: '1px solid rgba(255,255,255,0.1)',
                                             borderRadius: '16px',
-                                            padding: '30px',
+                                            padding: screenSize === 'mobile' ? '25px' : '30px',
                                             transition: 'all 0.3s ease',
                                             cursor: 'default'
                                         }}
 >
                                             <div className="icon" style={{
                                                 marginBottom: '20px',
-                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))'
+                                                filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                width: '100%'
                                             }}>
-                                                <img src="/assets/images/common/icon_7.png" alt="" />
+                                                <img src="/assets/images/common/icon_7.png" alt="" style={{
+                                                    width: screenSize === 'mobile' ? '40px' : '50px',
+                                                    height: screenSize === 'mobile' ? '40px' : '50px'
+                                                }} />
                                             </div>
+                                            <h5 className="title" style={{
+                                                color: '#E2E8F0',
+                                                marginBottom: '15px',
+                                                fontSize: screenSize === 'mobile' ? '18px' : '20px',
+                                                fontWeight: '600',
+                                                textAlign: 'center'
+                                            }}>Zero Fees, Pure Profit</h5>
                                             <div className="content">
-                                                <h5 className="title" style={{
-                                                    color: '#E2E8F0',
-                                                    marginBottom: '12px',
-                                                    fontSize: '20px',
-                                                    fontWeight: '600'
-                                                }}>Zero Fees, Pure Profit</h5>
                                                 <p style={{
                                                     color: '#9CA3AF',
                                                     lineHeight: '1.6',
-                                                    margin: 0
+                                                    margin: 0,
+                                                    fontSize: screenSize === 'mobile' ? '14px' : '16px',
+                                                    textAlign: 'justify'
                                                 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at nunc non
                                                     ligula suscipit tincidunt at sit amet nunc.</p>
                                             </div>
