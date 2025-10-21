@@ -265,7 +265,11 @@ export default function NativeUglyDogGame() {
     `
 
     popupContent.innerHTML = `
-      <div style="font-size: 1.8rem; margin-bottom: 8px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">🎉</div>
+      <div style="font-size: 1.8rem; margin-bottom: 8px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </div>
       <div style="font-size: 1rem; font-weight: bold; margin-bottom: 6px; color: #86FF00; text-shadow: 0 0 16px rgba(134, 255, 0, 0.8), 0 2px 8px rgba(0, 0, 0, 0.7);">LEVEL UP!</div>
       <div style="font-size: 0.8rem; margin-bottom: 10px; opacity: 0.95; color: #ffffff; font-weight: 500;">Level ${level}</div>
       <div style="font-size: 0.7rem; margin-bottom: 8px; color: #fbbf24; opacity: 0.9; font-weight: 500;">Break time:</div>
@@ -397,7 +401,7 @@ export default function NativeUglyDogGame() {
     } else if (level >= 6) {
       return {
         spawnDelay: 800,       // 0.8 second between spawns (LIGHTNING FAST!)
-        autoMissTimer: 700,    // 0.7 SECOND before disappear (INSANE REFLEXES REQUIRED!) 🔥💀
+        autoMissTimer: 700,    // 0.7 SECOND before disappear (INSANE REFLEXES REQUIRED!)
         showCountdown: true
       }
     } else {
@@ -598,7 +602,9 @@ export default function NativeUglyDogGame() {
   // Start game - SPAWN-DISAPPEAR MODE
   // Strict parity: Start Game handler with auth redirect
   const startGame = () => {
+    console.log('Start game clicked - isAuthenticated:', isAuthenticated, 'user:', user)
     if (!isAuthenticated) {
+      console.log('Not authenticated, redirecting to login')
       router.push('/login');
       return;
     }
@@ -671,7 +677,7 @@ export default function NativeUglyDogGame() {
     effect.style.zIndex = '9999'
     effect.style.animation = 'float-up 1.2s ease-out forwards'
     effect.style.textShadow = '0 0 10px #86FF00'
-    effect.textContent = '+1 ✨'
+    effect.textContent = '+1'
     
     document.body.appendChild(effect)
     setTimeout(() => effect.remove(), 1200)
@@ -2975,10 +2981,16 @@ export default function NativeUglyDogGame() {
           <div className="game-rotation-content">
             {!miniGameState.showMiniGame ? (
               <>
-                <div className="game-rotation-icon">🎮</div>
+                <div className="game-rotation-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
                 <div className="game-rotation-text">Try Mini Preview</div>
                 <div className="game-rotation-subtitle">Tap to experience the game</div>
-                <div className="game-rotation-subtitle">📱 Rotate for full game experience</div>
+                <div className="game-rotation-subtitle">Rotate for full game experience</div>
                 <button 
                   className="mini-preview-start-btn"
                   onClick={startMiniGame}
@@ -2998,15 +3010,22 @@ export default function NativeUglyDogGame() {
                         position: 'absolute',
                         cursor: 'pointer',
                         transition: 'all 0.3s ease',
-                        fontSize: '40px',
                         userSelect: 'none'
                       }}
                       onClick={handleMiniDogClick}
                     >
-                      🐶
+                      <img 
+                        src="/assets/images/uglydog-original.png" 
+                        alt="UglyDog" 
+                        style={{
+                          width: '40px',
+                          height: '40px',
+                          objectFit: 'contain'
+                        }}
+                      />
                     </div>
                   </div>
-                  <div className="game-rotation-subtitle">📱 Rotate for full game experience</div>
+                  <div className="game-rotation-subtitle">Rotate for full game experience</div>
                 </>
               )}
             </div>
@@ -3217,7 +3236,7 @@ export default function NativeUglyDogGame() {
                       maxWidth: '200px',
                       lineHeight: '1.3'
                     }}>
-                      🎯 Click UglyDog before it disappears!
+                      Click UglyDog before it disappears!
                     </div>
                   )}
                 </>
@@ -3287,7 +3306,7 @@ export default function NativeUglyDogGame() {
             <div className={`mobile-dropdown-content ${showLeaderboardDropdown ? 'show' : ''}`}>
               <div className="mobile-leaderboard">
                 <div className="mobile-leaderboard-header">
-                  <h3>🏆 Leaderboard</h3>
+                  <h3>Leaderboard</h3>
                   <button 
                     className="close-dropdown"
                     onClick={() => setShowLeaderboardDropdown(false)}
@@ -3406,7 +3425,12 @@ export default function NativeUglyDogGame() {
               
               <div className="mobile-how-to-play-grid">
                 <div className="mobile-instruction-card">
-                  <div className="mobile-instruction-icon">🎯</div>
+                  <div className="mobile-instruction-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 12l2 2 4-4"/>
+                      <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"/>
+                    </svg>
+                  </div>
                   <div className="mobile-instruction-title">Click UglyDog</div>
                   <div className="mobile-instruction-text">Click the UglyDog before it disappears to score points</div>
                 </div>
@@ -3424,7 +3448,11 @@ export default function NativeUglyDogGame() {
                 </div>
                 
                 <div className="mobile-instruction-card">
-                  <div className="mobile-instruction-icon">⭐</div>
+                  <div className="mobile-instruction-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  </div>
                   <div className="mobile-instruction-title">Level Up</div>
                   <div className="mobile-instruction-text">Every 50 points = new level + 5 second break</div>
                 </div>
