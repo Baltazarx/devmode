@@ -112,7 +112,7 @@ export default function Register() {
         .auth-container {
           position: relative;
           z-index: 2;
-          padding: 80px 0;
+          padding: 120px 0 80px 0;
           min-height: 100vh;
           display: flex;
           align-items: center;
@@ -330,22 +330,197 @@ export default function Register() {
 
         @media (max-width: 768px) {
           .auth-container {
-            padding: 40px 20px;
+            padding: 100px 15px 40px 15px;
+            min-height: calc(100vh - 60px);
           }
           
           .auth-card {
-            padding: 30px 20px;
+            padding: 25px 20px;
             max-width: 100%;
+            margin: 0 auto;
+            border-radius: 20px;
+          }
+          
+          .auth-header {
+            margin-bottom: 30px;
           }
           
           .auth-title {
-            font-size: 28px;
+            font-size: 26px;
+            line-height: 1.2;
+          }
+          
+          .auth-subtitle {
+            font-size: 14px;
+            line-height: 1.4;
           }
           
           .auth-logo {
             width: 60px;
             height: 60px;
             font-size: 24px;
+            margin-bottom: 15px;
+          }
+          
+          .auth-tabs {
+            margin-bottom: 25px;
+          }
+          
+          .auth-tab {
+            padding: 10px 16px;
+            font-size: 13px;
+          }
+          
+          .form-group {
+            margin-bottom: 18px;
+          }
+          
+          .form-label {
+            font-size: 13px;
+            margin-bottom: 6px;
+          }
+          
+          .form-input {
+            padding: 14px 16px;
+            font-size: 15px;
+            border-radius: 10px;
+          }
+          
+          .form-checkbox {
+            margin-bottom: 20px;
+            gap: 10px;
+          }
+          
+          .checkbox-input {
+            width: 18px;
+            height: 18px;
+            margin-top: 1px;
+          }
+          
+          .checkbox-label {
+            font-size: 13px;
+            line-height: 1.4;
+          }
+          
+          .auth-button {
+            padding: 14px 20px;
+            font-size: 15px;
+            border-radius: 10px;
+          }
+          
+          .auth-footer {
+            margin-top: 25px;
+            font-size: 13px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .auth-container {
+            padding: 90px 10px 30px 10px;
+          }
+          
+          .auth-card {
+            padding: 20px 15px;
+            border-radius: 16px;
+          }
+          
+          .auth-header {
+            margin-bottom: 25px;
+          }
+          
+          .auth-title {
+            font-size: 24px;
+          }
+          
+          .auth-subtitle {
+            font-size: 13px;
+          }
+          
+          .auth-logo {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin-bottom: 12px;
+          }
+          
+          .auth-tabs {
+            margin-bottom: 20px;
+          }
+          
+          .auth-tab {
+            padding: 8px 12px;
+            font-size: 12px;
+          }
+          
+          .form-group {
+            margin-bottom: 16px;
+          }
+          
+          .form-label {
+            font-size: 12px;
+            margin-bottom: 5px;
+          }
+          
+          .form-input {
+            padding: 12px 14px;
+            font-size: 14px;
+            border-radius: 8px;
+          }
+          
+          .form-checkbox {
+            margin-bottom: 18px;
+            gap: 8px;
+          }
+          
+          .checkbox-input {
+            width: 16px;
+            height: 16px;
+          }
+          
+          .checkbox-label {
+            font-size: 12px;
+          }
+          
+          .auth-button {
+            padding: 12px 18px;
+            font-size: 14px;
+            border-radius: 8px;
+          }
+          
+          .auth-footer {
+            margin-top: 20px;
+            font-size: 12px;
+          }
+        }
+
+        @media (max-width: 360px) {
+          .auth-container {
+            padding: 80px 8px 25px 8px;
+          }
+          
+          .auth-card {
+            padding: 18px 12px;
+            border-radius: 14px;
+          }
+          
+          .auth-title {
+            font-size: 22px;
+          }
+          
+          .auth-logo {
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+          }
+          
+          .form-input {
+            padding: 11px 12px;
+            font-size: 13px;
+          }
+          
+          .auth-button {
+            padding: 11px 16px;
+            font-size: 13px;
           }
         }
       `}</style>

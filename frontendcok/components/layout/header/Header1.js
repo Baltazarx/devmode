@@ -82,7 +82,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, handle
                     </div>
 
                     {isMobile ? (
-                        <MobileMenu isMobileMenu={isMobileMenu} />
+                        <MobileMenu isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} />
                     ) : (
                         <nav id="main-nav" className="main-nav">
                             <ul id="menu-primary-menu" className="menu">
