@@ -549,10 +549,18 @@ form button {
   font-size: 18px;
   color: #000000;
   font-weight: 600;
+  z-index: 1;
+  pointer-events: none;
 }
 
 #scroll-top:hover {
   transform: translateY(-7%);
+}
+
+/* Smooth Scroll
+-------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
 }
 
 /* PreLoad

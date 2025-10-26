@@ -532,19 +532,26 @@ form {
     background: $color-main1;
 }
 
-
 #scroll-top:after {
     content    : "\f077";
     font-family: "Font Awesome 5 Pro";
     font-size  : 18px;
     color      : $black;
     font-weight: 600;
+    z-index    : 1;
+    pointer-events: none;
 }
 
 #scroll-top:hover {
     transform: translateY(-7%);
 }
 
+
+/* Smooth Scroll
+-------------------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+}
 
 /* PreLoad
 -------------------------------------------------------------- */

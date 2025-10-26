@@ -8,9 +8,18 @@ import { useState, useLayoutEffect } from 'react'
 const scrollToUglyDogGame = () => {
     const gameSection = document.getElementById('uglydog-clicker');
     if (gameSection) {
-        gameSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+        const elementPosition = gameSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - 80; // 80px offset from top
+        
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    } else {
+        // Fallback: scroll to top if section not found
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     }
 };

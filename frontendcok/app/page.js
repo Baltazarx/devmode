@@ -21,7 +21,7 @@ export default function App() {
         <>
             <Layout headerStyle={1} footerStyle={1}>
                 <Pagetitle3 />
-                <section className="py-8 md:py-12 bg-transparent" style={{marginBottom: '40px'}}>
+                <section id="uglydog-clicker" className="py-8 md:py-12 bg-transparent" style={{marginBottom: '40px'}}>
                   <UglyDogGameLayout />
                 </section>
                 <Feature2 />
