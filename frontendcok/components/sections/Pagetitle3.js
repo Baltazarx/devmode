@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 import CounterUp from "../elements/CounterUp"
+import NewsSlider from "../elements/NewsSlider"
 import { useState, useLayoutEffect } from 'react'
 
 const scrollToUglyDogGame = () => {
@@ -178,24 +179,7 @@ export default function Pagetitle3() {
                                                         </button>
                                                     </div>
                                                     <div className="flat-box" style={screenSize === 'mobile' ? { display: 'none' } : {}}>
-                                                        <div className="box-couter">
-                                                            <p>Potential project</p>
-                                                            <div className="number-content">
-                                                                <h6 className="count-number2"><CounterUp count={700} time={1} />+</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div className="box-couter">
-                                                            <p>Market cap</p>
-                                                            <div className="number-content">
-                                                                <h6 className="count-number2">$<CounterUp count={570} time={1} /> M</h6>
-                                                            </div>
-                                                        </div>
-                                                        <div className="box-couter">
-                                                            <p>Investors</p>
-                                                            <div className="number-content">
-                                                                <h6 className="count-number2"><CounterUp count={7} time={1} /></h6>
-                                                            </div>
-                                                        </div>
+                                                        <NewsSlider screenSize={screenSize} />
                                                     </div>
                                                 </div>
                                                 <div className="image" style={screenSize === 'mobile' ? {
@@ -258,34 +242,13 @@ export default function Pagetitle3() {
                                                     </button>
                                                 </div>
                                                 
-                                                {/* Stats Counter untuk mobile */}
+                                                {/* News Slider untuk mobile */}
                                                 <div style={screenSize === 'mobile' ? {
                                                     order: '5',
-                                                    display: 'flex',
-                                                    justifyContent: 'center',
-                                                    gap: '20px',
-                                                    flexWrap: 'wrap',
                                                     width: '100%',
                                                     padding: '0 20px'
                                                 } : { display: 'none' }}>
-                                                    <div className="box-couter">
-                                                        <p>Potential project</p>
-                                                        <div className="number-content">
-                                                            <h6 className="count-number2"><CounterUp count={700} time={1} />+</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div className="box-couter">
-                                                        <p>Market cap</p>
-                                                        <div className="number-content">
-                                                            <h6 className="count-number2">$<CounterUp count={570} time={1} /> M</h6>
-                                                        </div>
-                                                    </div>
-                                                    <div className="box-couter">
-                                                        <p>Investors</p>
-                                                        <div className="number-content">
-                                                            <h6 className="count-number2"><CounterUp count={7} time={1} /></h6>
-                                                        </div>
-                                                    </div>
+                                                    <NewsSlider screenSize={screenSize} />
                                                 </div>
                         </div>
                         </div>
