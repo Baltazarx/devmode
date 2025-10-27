@@ -246,9 +246,29 @@ export default function Pagetitle3() {
                                                 <div style={screenSize === 'mobile' ? {
                                                     order: '5',
                                                     width: '100%',
-                                                    padding: '0 20px'
+                                                    padding: '0 20px',
+                                                    marginTop: '55px'
                                                 } : { display: 'none' }}>
-                                                    <NewsSlider screenSize={screenSize} />
+                                                    <div style={{
+                                                        background: 'rgba(255, 255, 255, 0.02)',
+                                                        border: '1px solid rgba(134, 255, 0, 0.1)',
+                                                        borderRadius: '12px',
+                                                        padding: '20px',
+                                                        backdropFilter: 'blur(10px)',
+                                                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+                                                    }}>
+                                                        <h3 style={{
+                                                            fontSize: '18px',
+                                                            fontWeight: '600',
+                                                            color: '#86FF00',
+                                                            marginBottom: '15px',
+                                                            textAlign: 'center',
+                                                            textShadow: '0 0 10px rgba(134, 255, 0, 0.3)'
+                                                        }}>
+                                                            What's New?
+                                                        </h3>
+                                                        <NewsSlider screenSize={screenSize} />
+                                                    </div>
                                                 </div>
                         </div>
                         </div>
